@@ -1,0 +1,89 @@
+
+<body>
+
+<div class="container">
+  <br>
+  <center><h1>Delete a Word</h1></center><br><br>
+<!--   <p>The form below contains two dropdown menus (select lists):</p>
+ -->  <form>
+    <div class="form-group">
+      <label for="sel1">Select Topic (select one):</label><br>
+      <select class="form-control" onchange="a()" id="sel1" name="sellist1">
+                      <option class="aman"></option>
+
+       <% for i in @clist do %>
+
+        <option class="aman"><%= i[1..-2] %> </option>
+        <% end%>
+      </select>
+      <br>
+      <label for="sel2">Select The Word</label><br>
+<select class="form-control pla" id="sel2" name="sellist2">
+       
+      </select>
+    </div>
+    <br>
+    <center><button type="submit" class="btn btn-outline-danger" onclick="smit()">Submit</button></center>
+  </form>
+</div>
+
+</body>
+
+<script type="text/javascript">
+  
+var p = <%= raw json_escape(@p.to_json) %>;
+
+function a()
+{
+	var x = document.getElementById("sel1").selectedIndex;
+  var l=document.getElementsByClassName("aman")[x].value;
+
+if($("#sel2").length){
+	$("#sel2").empty();
+
+}
+	
+	
+for(i=0;i<Object.keys(p[l]).length;i++)
+{var o = new Option(p[l][i]);
+	o.setAttribute('class', 'note');
+/// jquerify the DOM object 'o' so we can use the html method
+$(o).html(p[l][i]);
+
+$("#sel2").append(o);
+
+}
+}
+
+function  smit(){
+
+var x = document.getElementById("sel1").selectedIndex;
+  var l='`'+document.getElementsByClassName("aman")[x].value+'`';
+
+
+
+
+if(x != 0){
+var x2 = document.getElementById("sel2").selectedIndex;
+  var l2='"'+document.getElementsByClassName("note")[x2].value+'"';
+	
+$.ajax({
+  type:"GET",
+  url:"deletedata",
+  dataType:"json",
+  data: { table: l , word: l2 },
+  success:function(result){
+    alert("The Word is Successfully Deleted");
+  }
+})
+}
+else
+{
+  alert("Please Select the Word");
+}
+
+}
+
+</script>
+
+

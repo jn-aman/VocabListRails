@@ -1,0 +1,54 @@
+
+<body>
+
+<div class="container">
+  <br>
+  <center><h1>Insert a Word</h1></center><br><br>
+<!--   <p>The form below contains two dropdown menus (select lists):</p>
+ -->  <form>
+    <div class="form-group">
+      <label for="sel1">Select Topic (select one):</label><br>
+      <select class="form-control" id="sel1" name="sellist1">
+       <% for i in @clist do %>
+        <option><%= i[1..-2] %> </option>
+        <% end%>
+      </select>
+      <br>
+      <label for="sel2">Enter The Word</label><br>
+<input  type="text" id="wd" class="form-control form-control-lg">
+
+    </div>
+    <br>
+    <center><button type="submit" class="btn btn-outline-danger" onclick="smit()">Submit</button></center>
+  </form>
+</div>
+
+</body>
+
+<script type="text/javascript">
+  
+function  smit(){
+var x = document.getElementById("sel1").selectedIndex;
+  var l='`'+document.getElementsByTagName("option")[x].value+'`';
+  var w='"'+document.getElementById("wd").value+'"';
+if(w != ""){
+$.ajax({
+  type:"GET",
+  url:"insertdata",
+  dataType:"json",
+  data: { table: l , word: w },
+  success:function(result){
+    alert("The Word is Successfully Inserted");
+  }
+})
+}
+else
+{
+  alert("Please Enter the Word");
+}
+
+}
+
+</script>
+
+
