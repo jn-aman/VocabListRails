@@ -1,9 +1,7 @@
 class Vocab2 < ApplicationRecord
 def self.getEverthing
 	
-sql="SELECT COLUMN_NAME
-  FROM INFORMATION_SCHEMA.COLUMNS
-  WHERE TABLE_SCHEMA = 'vocab' AND TABLE_NAME = 'vocab'";
+sql="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'vocab' AND TABLE_NAME = 'vocab'";
 colList=[]
 col=ActiveRecord::Base.connection.execute(sql)
 		for i in col do
@@ -29,9 +27,7 @@ end
 
 
 def self.getColList
-sql="SELECT COLUMN_NAME
-  FROM INFORMATION_SCHEMA.COLUMNS
-  WHERE TABLE_SCHEMA = 'vocab' AND TABLE_NAME = 'vocab'";
+sql="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'vocab' AND TABLE_NAME = 'vocab'";
 colList=[]
 col=ActiveRecord::Base.connection.execute(sql)
 		for i in col do
