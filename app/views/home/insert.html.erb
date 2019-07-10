@@ -36,9 +36,10 @@ function  smit(){
 
 var x = document.getElementById("sel1").selectedIndex;
   var l='`'+document.getElementsByTagName("option")[x].value+'`';
-  var w=document.getElementById("wd").value;
-if(w != ""){
-    w="'"+document.getElementById("wd").value+"'";
+
+  var wp=document.getElementById("wd");
+if(wp.value != ""){
+   var w="'"+document.getElementById("wd").value+"'";
 
 $.ajax({
   type:"GET",
@@ -50,8 +51,13 @@ Swal.fire(
   'Good job!',
   'Word Successfully Saved!',
   'success'
-)  }
+) 
+wp.value="";
+
+ }
 })
+
+
 }
 else
 {

@@ -2,6 +2,11 @@ class HomeController < ApplicationController
   def index
   	@p=Vocab2.getEverthing
   end
+
+ 
+
+
+
 def insert
 
 @clist=Vocab2.getColList
@@ -43,6 +48,6 @@ col=ActiveRecord::Base.connection.execute(sql)
     	# end
 end
 
-
+Vocab2.clean
 
 end

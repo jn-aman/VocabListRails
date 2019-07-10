@@ -46,4 +46,23 @@ return colList
 end
 
 
+
+def self.clean
+
+	pl2=""
+c=Vocab2.getColList
+for i in c do
+		pl2+=i+" is NULL and "
+		end
+		pl2=pl2[0..-5]
+sql="DELETE FROM vocab WHERE "+ pl2 + ";"
+puts sql
+ActiveRecord::Base.connection.execute(sql)
+
+
+end
+
+
+
+
 end

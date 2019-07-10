@@ -81,6 +81,7 @@ var x = document.getElementById("sel1").selectedIndex;
 
 if(x != 0){
 var x2 = document.getElementById("sel2").selectedIndex;
+var la=document.getElementsByClassName("note")[x2];
   var l2='"'+document.getElementsByClassName("note")[x2].value+'"';
 	
 $.ajax({
@@ -94,8 +95,7 @@ Swal.fire(
   'Word Successfully Deleted!',
   'success'
 )   
-
-
+la.remove();
 }
 })
 }
