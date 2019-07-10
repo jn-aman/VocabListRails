@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 <body>
 
@@ -23,13 +24,18 @@
       </select>
     </div>
     <br>
-    <center><button type="submit" class="btn btn-outline-danger" onclick="smit()">Submit</button></center>
+    <center><button type="submit" id="submit" class="btn btn-outline-danger" onclick="smit()">Submit</button></center>
   </form>
 </div>
 
 </body>
 
 <script type="text/javascript">
+
+
+
+
+
   
 var p = <%= raw json_escape(@p.to_json) %>;
 
@@ -55,10 +61,20 @@ $("#sel2").append(o);
 }
 }
 
+document.getElementById("submit").addEventListener("click", function(event){
+  event.preventDefault()
+});
+
 function  smit(){
+
+
+
 
 var x = document.getElementById("sel1").selectedIndex;
   var l='`'+document.getElementsByClassName("aman")[x].value+'`';
+
+
+
 
 
 
@@ -73,14 +89,23 @@ $.ajax({
   dataType:"json",
   data: { table: l , word: l2 },
   success:function(result){
-    alert("The Word is Successfully Deleted");
-  }
+Swal.fire(
+  'Good job!',
+  'Word Successfully Deleted!',
+  'success'
+)   
+
+
+}
 })
 }
 else
 {
-  alert("Please Select the Word");
-}
+Swal.fire({
+  type: 'error',
+  title: 'Oops...',
+  text: 'Word not Selected!'
+})}
 
 }
 
