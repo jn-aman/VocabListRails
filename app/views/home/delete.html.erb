@@ -24,7 +24,12 @@
       </select>
     </div>
     <br>
-    <center><button type="submit" id="submit" class="btn btn-outline-danger" onclick="smit()">Submit</button></center>
+    <div class='container'>
+    <center><button id= "submit" type="submit" class="btn btn-outline-danger" onclick="smit()">Submit</button>
+    <button id= "back" type="back" class="btn btn-outline-danger" >Back</button></center>
+
+  </form>
+</div>
   </form>
 </div>
 
@@ -34,10 +39,14 @@
 
 
 
-
+ document.getElementById("back").addEventListener("click", function(event){
+  event.preventDefault()
+  window.location='/home/index'
+});
 
   
 var p = <%= raw json_escape(@p.to_json) %>;
+
 
 function a()
 {
@@ -51,7 +60,8 @@ if($("#sel2").length){
 	
 	
 for(i=0;i<Object.keys(p[l]).length;i++)
-{var o = new Option(p[l][i]);
+{
+  var o = new Option(p[l][i]);
 	o.setAttribute('class', 'note');
 /// jquerify the DOM object 'o' so we can use the html method
 $(o).html(p[l][i]);

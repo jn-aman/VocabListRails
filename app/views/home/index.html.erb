@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en"> 
+  <style type="text/css">
+  	
+tr{
+    font-size: 1.5vw;
+}
+  </style>
+
   <head>
+
 <link rel="icon" href="icon.png"> 
 
     <meta charset="utf-8"> 
@@ -13,7 +21,7 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"> </script>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"> </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"> </script>
 
@@ -71,7 +79,7 @@ console.log(shuffle(text));
 
   var words = text;
 
-  var html = '<a href="#" class="list-group-item list-group-item-action active">Shuffled Words</a>';
+  var html = '<a href="/home/insert" class="list-group-item list-group-item-action active">Shuffled Words ( '+text.length +' )</a>';
   $.each(words, function(i, word) {
   	// var z='https://www.google.com/search?hl=en&q=Dictionary#dobs='+ word +" ";
 var z='https://www.google.com/#q='+ word +" ";
@@ -102,7 +110,7 @@ if($("#divResults").length){
     <title>Vocabulary Builder</title>
   </head>
   <body><center>
-    <h1>Vocabulary List!!</h1>
+    <h1>Vocabulary List <a href="/home/insert">!</a> <a href="/home/delete">!</a></h1>
 <br>
 <br>
 
@@ -144,7 +152,7 @@ if($("#divResults").length){
      <td><label class="checkbox-inline"> <input class="aman" type="checkbox" value="LSD-2"> LSD II</label></td>
 <td><label class="checkbox-inline"> <input class="aman" type="checkbox" value="Food,clothing n shelter"> Food Clothing and Shelter</label></td>
 <td><label class="checkbox-inline"> <input class="aman" type="checkbox" value="Break n brake"> Break and Brake</label></td>
-<td><label class="checkbox-inline"> <input class="aman" type="checkbox" value="A Walk through clouds"> A Walk through clouds</label></td>
+<td><label class="checkbox-inline"> <input class="aman" type="checkbox" value="A Walk through clouds"> A Walk through Clouds</label></td>
 <td><label class="checkbox-inline"> <input class="aman" type="checkbox" value="Time flies"> Time Flies</label></td>
     </tr>
   </tbody>
@@ -154,6 +162,15 @@ if($("#divResults").length){
 	.list-group{
 		font-size: 120%; 
 	}
+
+a  {color: black;
+    text-decoration: none !important;
+}
+
+a:hover {color: black;
+    text-decoration: none !important;
+}
+
 </style>
 
 
