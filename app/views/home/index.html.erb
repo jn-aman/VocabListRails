@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"> 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
   <head>
 
 <link rel="icon" href="icon.png"> 
@@ -14,7 +14,10 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
 
-
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"> </script>
@@ -23,6 +26,10 @@
 <script type="text/javascript"> 
   
   
+
+  
+
+   
 
 p=<%= raw json_escape(@p.to_json) %>;
 
@@ -45,14 +52,14 @@ function shuffle(array) {
   return array;
 }
 
+function te()
+{
+      document.getElementById("popup:selected").style.color = "red";
+
+}
 
 
 function submit() {
-
-
-
-    
-
   var index;
 var text=[];
   var checkedVals = $('.aman:checkbox:checked').map(function() {
@@ -75,10 +82,16 @@ console.log(shuffle(text));
 
   var html = '<a href="/home/insert" class="list-group-item list-group-item-action active">Shuffled Words ( '+text.length +' )</a>';
   $.each(words, function(i, word) {
-  	// var z='https://www.google.com/search?hl=en&q=Dictionary#dobs='+ word +" ";
+  	var z='https://www.google.com/search?hl=en&q=Dictionary#dobs='+ word +" ";
 var z='https://www.google.com/#q='+ word +" ";
-    html += '<a href='+ z + '\, class="list-group-item list-group-item-action">'+ word+ '</a>';
+    html += '<a onclick=\'this.style.color="red"; return false\' ondblclick="location=this.href" href='+ z + '\, class="list-group-item list-group-item-action"  >'+ word+ '</a>';
+  
+
+
   });
+
+
+
 
   
 if($("#divResults").length){
@@ -95,8 +108,14 @@ if($("#divResults").length){
 
 
 
-
-
+jQuery(function($) {
+    $('#golink').click(function() {
+        return false;
+    }).dblclick(function() {
+        window.location = this.href;
+        return false;
+    });
+});
 
 
 </script>
@@ -151,6 +170,7 @@ if($("#divResults").length){
     </tr>
   </tbody>
 </table>
+ 
 
 <style type="text/css">
 	.list-group{
@@ -174,7 +194,9 @@ a:hover {color: black;
  <div id="divResults" class="list-group"> 
 </div>
 </center>
-    
+
     
   </body>
+
+
 </html>
