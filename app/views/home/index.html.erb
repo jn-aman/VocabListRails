@@ -61,8 +61,14 @@ function shuffle(array) {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+function df(){
+  this.style.color="red"; this.classList.add("red"); return false;
+
+}
+
 
 function submit() {
+  $(".space").show();
   var index;
 var text=[];
   var checkedVals = $('.aman:checkbox:checked').map(function() {
@@ -87,12 +93,11 @@ console.log(shuffle(text));
   $.each(words, function(i, word) {
   	var z='https://www.google.com/search?hl=en&q=Dictionary#dobs='+ word +" ";
 var z='https://www.google.com/#q='+ word +" ";
-    html += '<a onclick=\'this.style.color="red"; return false\' ondblclick="location=this.href" href='+ z + '\, class="list-group-item list-group-item-action"  >'+ String(i+1)+".      "+  capitalizeFirstLetter(String(word))+ '</a>';
+    html += '<a onclick=\'this.style.color="red"; this.classList.add("red"); return false;\' ondblclick="location=this.href" href='+ z + '\, class="list-group-item list-group-item-action"  >'+ String(i+1)+". "+  capitalizeFirstLetter(String(word))+ '</a>';
   
 
 
   });
-
 
 
 
@@ -188,11 +193,46 @@ a:hover {color: black;
     text-decoration: none !important;
 }
 
+.space{
+  margin-left: 20px;
+}
+.black{
+  color: black;
+}
+.red{
+  color: red;
+}
 </style>
 
 
 
-<button type="button" class="btn btn-outline-danger" onclick="submit()"> Get Words</button><br><br>
+<button type="button" class="btn btn-outline-danger" onclick="submit()"> Get Words</button>
+<button type="button" class="btn btn-outline-danger space" onclick="s2()"> Get Marked Words</button><br><br>
+<script type="text/javascript">
+  $(".space").hide();
+function s2() {
+  if(document.getElementsByClassName("red").length==0)
+  {
+Swal.fire({
+  type: 'error',
+  title: 'No Word Selected',
+  footer: 'created by Aman Jain'
+})
+  return;
+
+  }
+var words=document.getElementsByClassName("red");
+// console.log(words);
+var redwords=[];
+for (i=0;i<words.length;i++) {
+redwords.push(words[i].text.split(". ").pop());
+}
+Swal.fire(String(redwords.join("\n")));
+// console.log(String(redwords));
+}
+
+
+</script>
 <br>
 </center>
 
