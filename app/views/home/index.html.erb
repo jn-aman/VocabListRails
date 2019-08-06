@@ -58,12 +58,9 @@ function shuffle(array) {
   return array;
 }
 
-function te()
-{
-      document.getElementById("popup:selected").style.color = "red";
-
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 
 function submit() {
   var index;
@@ -90,7 +87,7 @@ console.log(shuffle(text));
   $.each(words, function(i, word) {
   	var z='https://www.google.com/search?hl=en&q=Dictionary#dobs='+ word +" ";
 var z='https://www.google.com/#q='+ word +" ";
-    html += '<a onclick=\'this.style.color="red"; return false\' ondblclick="location=this.href" href='+ z + '\, class="list-group-item list-group-item-action"  >'+ word+ '</a>';
+    html += '<a onclick=\'this.style.color="red"; return false\' ondblclick="location=this.href" href='+ z + '\, class="list-group-item list-group-item-action"  >'+ String(i+1)+".      "+  capitalizeFirstLetter(String(word))+ '</a>';
   
 
 
@@ -197,9 +194,22 @@ a:hover {color: black;
 
 <button type="button" class="btn btn-outline-danger" onclick="submit()"> Get Words</button><br><br>
 <br>
- <div id="divResults" class="list-group"> 
-</div>
 </center>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+    </div>
+    <div class="col-sm">
+<div id="divResults" class="list-group"> 
+</div>    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+
+ 
 
     
   </body>
